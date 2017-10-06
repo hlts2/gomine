@@ -9,7 +9,7 @@ import (
 
 var RootCmd = &cli.Command{
 	Use:   "gomine",
-	Short: "A CLI tool for Redmine",
+	Short: "A CLI tool for Redmine tickets viewer",
 }
 
 func Execute() {
