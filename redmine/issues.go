@@ -2,6 +2,8 @@ package redmine
 
 import (
 	"context"
+	"fmt"
+	"strconv"
 	"time"
 )
 
@@ -49,38 +51,57 @@ type ResponseIssues struct {
 	Limit      int `json:"limit"`
 }
 
-func (c *Client) issues(ctx context.Context, params map[string]string) (*ResponseIssues, error) {
+func (c *Client) Issues(ctx context.Context) error {
 	spath := "/issues.json"
 
-	req, err := c.newRequest(ctx, "GET", spath, params, nil)
-	if err != nil {
-		return nil, err
-	}
-
-	resp, err := c.HTTPClient.Do(req)
-	if err != nil {
-		return nil, err
-	}
-
-	resIssues := &ResponseIssues{}
-	if err := decodeBody(resp, resIssues); err != nil {
-		return nil, err
-	}
-
-	return resIssues, nil
-}
-
-func (c *Client) Issues(ctx context.Context) error {
 	params := map[string]string{
 		"key": c.APIKey,
 	}
 
-	res, err := c.issues(ctx, params)
+	req, err := c.newRequest(ctx, "GET", spath, params, nil)
 	if err != nil {
 		return err
 	}
 
-	viewer(res.Issues)
+	resp, err := c.HTTPClient.Do(req)
+	if err != nil {
+		return err
+	}
+
+	obj := &ResponseIssues{}
+	if err := decodeBody(resp, obj); err != nil {
+		return err
+	}
+
+	viewer(obj.Issues)
+
+	return nil
+}
+
+func (c *Client) Issue(ctx context.Context, id int) error {
+	spath := "/issues/" + strconv.Itoa(id) + ".json"
+
+	params := map[string]string{
+		"key": c.APIKey,
+	}
+
+	req, err := c.newRequest(ctx, "GET", spath, params, nil)
+	if err != nil {
+		return err
+	}
+
+	resp, err := c.HTTPClient.Do(req)
+	if err != nil {
+		return err
+	}
+
+	obj := &Issue{}
+	if err := decodeBody(resp, obj); err != nil {
+		return nil
+	}
+
+	//TODO　詳細を表示するように切り替える
+	fmt.Println(obj)
 
 	return nil
 }
