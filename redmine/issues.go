@@ -58,12 +58,7 @@ func (c *Client) Issues(ctx context.Context) error {
 		"key": c.APIKey,
 	}
 
-	req, err := c.newRequest(ctx, "GET", spath, params, nil)
-	if err != nil {
-		return err
-	}
-
-	resp, err := c.HTTPClient.Do(req)
+	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
 		return err
 	}
@@ -85,12 +80,7 @@ func (c *Client) Issue(ctx context.Context, id int) error {
 		"key": c.APIKey,
 	}
 
-	req, err := c.newRequest(ctx, "GET", spath, params, nil)
-	if err != nil {
-		return err
-	}
-
-	resp, err := c.HTTPClient.Do(req)
+	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
 		return err
 	}

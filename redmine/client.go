@@ -47,6 +47,20 @@ func (c *Client) newRequest(ctx context.Context, method, spath string, params ma
 	return req.WithContext(ctx), nil
 }
 
+func (c *Client) doGet(ctx context.Context, spath string, params map[string]string) (*http.Response, error) {
+	req, err := c.newRequest(ctx, "GET", spath, params, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := c.HTTPClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return resp, nil
+}
+
 func decodeBody(resp *http.Response, out interface{}) error {
 	defer resp.Body.Close()
 	return json.NewDecoder(resp.Body).Decode(out)
