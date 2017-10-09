@@ -36,16 +36,17 @@ func showIssues(issues Issues) {
 func showDetIssue(issue Issue) {
 	fmt.Printf(`
 *************************** no.%d ***************************
-#         : %d
-Project   : %s
-Tracker   : %s
-Status    : %s
-Priority  : %s
-Subject   : %s
-Assigned  : %s
-CreatedOn : %s
-DueDate   : %s
-DoneRatio : %d
+	#           : %d
+	Project     : %s
+	Tracker     : %s
+	Status      : %s
+	Priority    : %s
+	Subject     : %s
+	Assigned    : %s
+	CreatedOn   : %s
+	DueDate     : %s
+	DoneRatio   : %d
+	Description :
 
 %s
 		`,
