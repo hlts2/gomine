@@ -2,7 +2,6 @@ package redmine
 
 import (
 	"context"
-	"fmt"
 	"strconv"
 	"time"
 )
@@ -68,7 +67,8 @@ func (c *Client) Issues(ctx context.Context) error {
 		return err
 	}
 
-	viewer(obj.Issues)
+	//cmdパッケーで書く
+	showIssues(obj.Issues)
 
 	return nil
 }
@@ -90,8 +90,8 @@ func (c *Client) Issue(ctx context.Context, id int) error {
 		return nil
 	}
 
-	//TODO　詳細を表示するように切り替える
-	fmt.Println(obj)
+	//cmdパッケーで書く
+	showDetIssue(*obj)
 
 	return nil
 }

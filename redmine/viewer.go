@@ -4,18 +4,61 @@ import (
 	"fmt"
 )
 
-func viewer(issues Issues) {
+func showIssues(issues Issues) {
 	for i, v := range issues {
-		fmt.Printf("*************************** no.%d ***************************\n", i+1)
-		fmt.Printf("  #           : %d\n", v.ID)
-		fmt.Printf("  プロジェクト: %s\n", v.Project.Name)
-		fmt.Printf("  トラッカー  : %s\n", v.Tracker.Name)
-		fmt.Printf("  ステータス  : %s\n", v.Status.Name)
-		fmt.Printf("  優先度      : %s\n", v.Priority.Name)
-		fmt.Printf("  題名        : %s\n", v.Subject)
-		fmt.Printf("  担当者      : %s\n", v.AssignedTo.Name)
-		fmt.Printf("  更新日      : %s\n", v.CreatedOn)
-		fmt.Printf("  期限        : %s\n", v.DueDate)
-		fmt.Printf("  予定工数    : %d\n\n", v.DoneRatio)
+		fmt.Printf(`
+*************************** no.%d ***************************
+	#         : %d
+	Project   : %s
+	Tracker   : %s
+	Status    : %s
+	Priority  : %s
+	Subject   : %s
+	Assigned  : %s
+	CreatedOn : %s
+	DueDate   : %s
+	DoneRatio : %d
+		`,
+			i+1,
+			v.ID,
+			v.Project.Name,
+			v.Tracker.Name,
+			v.Status.Name,
+			v.Priority.Name,
+			v.Subject,
+			v.AssignedTo.Name,
+			v.CreatedOn,
+			v.DueDate,
+			v.DoneRatio)
 	}
+}
+
+func showDetIssue(issue Issue) {
+	fmt.Printf(`
+*************************** no.%d ***************************
+#         : %d
+Project   : %s
+Tracker   : %s
+Status    : %s
+Priority  : %s
+Subject   : %s
+Assigned  : %s
+CreatedOn : %s
+DueDate   : %s
+DoneRatio : %d
+
+%s
+		`,
+		1,
+		issue.ID,
+		issue.Project.Name,
+		issue.Tracker.Name,
+		issue.Status.Name,
+		issue.Priority.Name,
+		issue.Subject,
+		issue.AssignedTo.Name,
+		issue.CreatedOn,
+		issue.DueDate,
+		issue.DoneRatio,
+		issue.Description)
 }
