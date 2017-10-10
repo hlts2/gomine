@@ -18,13 +18,12 @@ func showIssues(issues Issues) {
 	CreatedOn : %s
 	DueDate   : %s
 	DoneRatio : %d
-		`,
+			`,
 			i+1,
 			v.ID,
 			v.Project.Name,
 			v.Tracker.Name,
 			v.Status.Name,
-			v.Priority.Name,
 			v.Subject,
 			v.AssignedTo.Name,
 			v.CreatedOn,

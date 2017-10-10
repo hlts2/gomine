@@ -49,5 +49,4 @@ func TestNewRequest(t *testing.T) {
 	}
 }
 
-func TestDecodeBody(t *testing.T) {
-}
+func TestDecodeBody(t *testing.T) {}

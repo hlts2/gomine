@@ -23,9 +23,20 @@ var (
 func init() {
 	RootCmd.AddCommand(catCmd)
 
-	catCmd.Flags().StringVarP(&tcktNum, "n", "number", "", "get ticket details of Redmine")
+	catCmd.PersistentFlags().StringVarP(&tcktNum, "number", "n", "", "get ticket details of Redmine")
 }
 
 func cat(cmd *cli.Command, args []string) error {
+	switch args[0] {
+
+	//Issues
+	case "i":
+
+	//Projects
+	case "p":
+	default:
+		return fmt.Errorf("gomine cat: %v: It is a noexistent command option", args[0])
+	}
+
 	return nil
 }

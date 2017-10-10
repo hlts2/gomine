@@ -24,8 +24,8 @@ var (
 func init() {
 	RootCmd.AddCommand(lsCmd)
 
-	lsCmd.Flags().StringVarP(&toWhom, "t", "to", "me", "get tickets to me")
-	lsCmd.Flags().StringVarP(&filter, "f", "filter", "", "get filtered tickets")
+	lsCmd.Flags().StringVarP(&toWhom, "to", "t", "me", "get tickets to me")
+	lsCmd.Flags().StringVarP(&filter, "filter", "f", "", "get filtered tickets")
 }
 
 func ls(cmd *cli.Command, args []string) error {
