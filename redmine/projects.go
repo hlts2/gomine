@@ -1,6 +1,10 @@
 package redmine
 
-import "time"
+import (
+	"context"
+	"fmt"
+	"time"
+)
 
 type Project struct {
 	ID          int       `json:"id"`
@@ -19,4 +23,27 @@ type ReponseProjects struct {
 	TotalCount int `json:"total_count"`
 	Offset     int `json:"offset"`
 	Limit      int `json:"limit"`
+}
+
+func (c *Client) Projects(ctx context.Context) error {
+	spath := "/projects.json"
+
+	params := map[string]string{
+		"key": c.APIKey,
+	}
+
+	resp, err := c.doGet(ctx, spath, params)
+	if err != nil {
+		return err
+	}
+
+	obj := &ReponseProjects{}
+	if err := decodeBody(resp, obj); err != nil {
+		return nil
+	}
+
+	//TODO Project用のViewerを書く
+	fmt.Println(obj)
+
+	return nil
 }
