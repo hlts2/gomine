@@ -6,6 +6,7 @@ import (
 
 func showIssues(issues Issues) {
 	for i, v := range issues {
+		fmt.Println(v.DoneRatio)
 		fmt.Printf(`
 *************************** no.%d ***************************
 	#         : %d
@@ -24,6 +25,7 @@ func showIssues(issues Issues) {
 			v.Project.Name,
 			v.Tracker.Name,
 			v.Status.Name,
+			v.Priority.Name,
 			v.Subject,
 			v.AssignedTo.Name,
 			v.CreatedOn,

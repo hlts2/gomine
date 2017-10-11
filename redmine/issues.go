@@ -43,6 +43,10 @@ type Issue struct {
 
 type Issues []Issue
 
+type ResponseIssue struct {
+	Issue `json:"issue"`
+}
+
 type ResponseIssues struct {
 	Issues     `json:"issues"`
 	TotalCount int `json:"total_count"`
@@ -85,13 +89,13 @@ func (c *Client) Issue(ctx context.Context, id int) error {
 		return err
 	}
 
-	obj := &Issue{}
+	obj := &ResponseIssue{}
 	if err := decodeBody(resp, obj); err != nil {
 		return nil
 	}
 
 	//cmdパッケーで書く
-	showDetIssue(*obj)
+	showDetIssue(obj.Issue)
 
 	return nil
 }
