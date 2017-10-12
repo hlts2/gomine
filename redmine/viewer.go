@@ -6,7 +6,6 @@ import (
 
 func showIssues(issues Issues) {
 	for i, v := range issues {
-		fmt.Println(v.DoneRatio)
 		fmt.Printf(`
 *************************** no.%d ***************************
 	#         : %d
@@ -63,4 +62,39 @@ func showDetIssue(issue Issue) {
 		issue.DueDate,
 		issue.DoneRatio,
 		issue.Description)
+}
+
+func showProjects(projects Projects) {
+	for i, project := range projects {
+		fmt.Printf(`
+*************************** no.%d ***************************
+	#			: %d
+	Name		: %s
+			`,
+			i+1,
+			project.ID,
+			project.Name)
+	}
+}
+
+func showDetProject(project Project) {
+	fmt.Printf(`
+*************************** no.%d ***************************
+	#			: %d
+	Name		: %s
+	Identifier  : %s
+	Status      : %d
+	CreatedOn   : %s
+	UpdatedOn   : %s
+	Description :
+
+%s
+		`,
+		1,
+		project.Name,
+		project.Identifier,
+		project.Status,
+		project.CreatedOn,
+		project.UpdatedOn,
+		project.Description)
 }
