@@ -68,8 +68,8 @@ func showProjects(projects Projects) {
 	for i, project := range projects {
 		fmt.Printf(`
 *************************** no.%d ***************************
-	#			: %d
-	Name		: %s
+	#           : %d
+	Name        : %s
 			`,
 			i+1,
 			project.ID,
@@ -80,9 +80,9 @@ func showProjects(projects Projects) {
 func showDetProject(project Project) {
 	fmt.Printf(`
 *************************** no.%d ***************************
-	#			: %d
-	Name		: %s
-	Identifier  : %s
+	#           : %s
+	Name        : %s
+	Identifier  : %d
 	Status      : %d
 	CreatedOn   : %s
 	UpdatedOn   : %s

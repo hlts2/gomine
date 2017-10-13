@@ -2,7 +2,6 @@ package redmine
 
 import (
 	"context"
-	"fmt"
 	"strconv"
 	"time"
 )
@@ -47,8 +46,8 @@ func (c *Client) Projects(ctx context.Context) error {
 		return nil
 	}
 
-	//TODO Projects用のViewerを書く
-	fmt.Println(obj)
+	//TODO cmd側で書く
+	showProjects(obj.Projects)
 
 	return nil
 }
@@ -70,7 +69,8 @@ func (c *Client) Project(ctx context.Context, id int) error {
 		return nil
 	}
 
-	//TODO Project用のViewerを書く
-	fmt.Println(obj)
+	//TODO cmd側で書く
+	showDetProject(obj.Project)
+
 	return nil
 }
