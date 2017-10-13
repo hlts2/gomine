@@ -65,13 +65,14 @@ func showDetIssue(issue Issue) {
 }
 
 func showProjects(projects Projects) {
-	for i, project := range projects {
+	fmt.Printf(`
+*************************** no.1 ***************************`)
+
+	for _, project := range projects {
 		fmt.Printf(`
-*************************** no.%d ***************************
 	#           : %d
 	Name        : %s
 			`,
-			i+1,
 			project.ID,
 			project.Name)
 	}
