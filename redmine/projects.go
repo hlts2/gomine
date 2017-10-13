@@ -26,7 +26,7 @@ type ReponseProjects struct {
 }
 
 type ResponseProject struct {
-	Project `json:project`
+	Project `json:"project"`
 }
 
 func (c *Client) Projects(ctx context.Context) error {
