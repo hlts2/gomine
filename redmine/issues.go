@@ -2,6 +2,7 @@ package redmine
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 	"time"
 )
@@ -87,6 +88,10 @@ func (c *Client) Issue(ctx context.Context, id int) error {
 	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
 		return err
+	}
+
+	if resp.StatusCode == 404 {
+		return fmt.Errorf("Issue Not Found")
 	}
 
 	obj := &ResponseIssue{}
