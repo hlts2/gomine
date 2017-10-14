@@ -12,7 +12,7 @@ func TestMemberShipsByID(t *testing.T) {
 		return
 	}
 
-	err = c.MembershipsByID(context.Background(), 63)
+	err = c.MembershipsByID(context.Background(), 37)
 	if err != nil {
 		t.Errorf("MembershipsByID error %v", err)
 		return
@@ -20,15 +20,14 @@ func TestMemberShipsByID(t *testing.T) {
 }
 
 func TestMemberShipsByName(t *testing.T) {
-	/*
-		c, err := NewClient(URL, API_KEY)
-		if err != nil {
-			t.Errorf("NewClient error %v", err)
-		}
+	c, err := NewClient(URL, API_KEY)
+	if err != nil {
+		t.Errorf("NewClient error %v", err)
+	}
 
-		err = c.MembershipsByName(context.Background(), "")
-		if err != nil {
-			t.Errorf("MembershipsByName error %v", err)
-		}
-	*/
+	err = c.MembershipsByName(context.Background(), "irai")
+	if err != nil {
+		t.Errorf("MembershipsByName error %v", err)
+		return
+	}
 }

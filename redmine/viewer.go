@@ -72,9 +72,11 @@ func showProjects(projects Projects) {
 		fmt.Printf(`
 	#           : %d
 	Name        : %s
+	Identifier  : %s
 			`,
 			project.ID,
-			project.Name)
+			project.Name,
+			project.Identifier)
 	}
 }
 

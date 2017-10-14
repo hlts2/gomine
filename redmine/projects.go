@@ -2,6 +2,7 @@ package redmine
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 	"time"
 )
@@ -41,6 +42,10 @@ func (c *Client) Projects(ctx context.Context) error {
 		return err
 	}
 
+	if resp.StatusCode == 404 {
+		return fmt.Errorf("Project Not Found")
+	}
+
 	obj := &ReponseProjects{}
 	if err := decodeBody(resp, obj); err != nil {
 		return nil
@@ -59,13 +64,17 @@ func (c *Client) Project(ctx context.Context, id int) error {
 		"key": c.APIKey,
 	}
 
-	res, err := c.doGet(ctx, spath, params)
+	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
 		return err
 	}
 
+	if resp.StatusCode == 404 {
+		return fmt.Errorf("Project Not Found")
+	}
+
 	obj := &ResponseProject{}
-	if err := decodeBody(res, obj); err != nil {
+	if err := decodeBody(resp, obj); err != nil {
 		return nil
 	}
 

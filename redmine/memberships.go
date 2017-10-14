@@ -2,6 +2,7 @@ package redmine
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 )
 
@@ -34,6 +35,10 @@ func (c *Client) memberships(ctx context.Context, spath string, params map[strin
 	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
 		return err
+	}
+
+	if resp.StatusCode == 404 {
+		return fmt.Errorf("Memberships Not Found")
 	}
 
 	obj := &ResponseMembership{}
