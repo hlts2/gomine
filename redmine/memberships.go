@@ -2,7 +2,6 @@ package redmine
 
 import (
 	"context"
-	"fmt"
 	"strconv"
 )
 
@@ -31,7 +30,7 @@ type ResponseMembership struct {
 	Limit       int `json:"limit"`
 }
 
-func (c *Client) Memberships(ctx context.Context, spath string, params map[string]string) error {
+func (c *Client) memberships(ctx context.Context, spath string, params map[string]string) error {
 	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
 		return err
@@ -42,8 +41,8 @@ func (c *Client) Memberships(ctx context.Context, spath string, params map[strin
 		return err
 	}
 
-	//TODO Viewを実装
-	fmt.Println(obj)
+	//cmdパッケージ内で書く
+	showMemberships(obj.Memberships)
 
 	return nil
 }
@@ -55,7 +54,7 @@ func (c *Client) MembershipsByID(ctx context.Context, id int) error {
 		"key": c.APIKey,
 	}
 
-	return c.Memberships(ctx, spath, params)
+	return c.memberships(ctx, spath, params)
 }
 
 func (c *Client) MembershipsByName(ctx context.Context, name string) error {
@@ -65,5 +64,5 @@ func (c *Client) MembershipsByName(ctx context.Context, name string) error {
 		"key": c.APIKey,
 	}
 
-	return c.Memberships(ctx, spath, params)
+	return c.memberships(ctx, spath, params)
 }

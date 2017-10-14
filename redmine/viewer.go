@@ -81,9 +81,9 @@ func showProjects(projects Projects) {
 func showDetProject(project Project) {
 	fmt.Printf(`
 *************************** no.%d ***************************
-	#           : %s
+	#           : %d
 	Name        : %s
-	Identifier  : %d
+	Identifier  : %s
 	Status      : %d
 	CreatedOn   : %s
 	UpdatedOn   : %s
@@ -92,10 +92,31 @@ func showDetProject(project Project) {
 %s
 		`,
 		1,
+		project.ID,
 		project.Name,
 		project.Identifier,
 		project.Status,
 		project.CreatedOn,
 		project.UpdatedOn,
 		project.Description)
+}
+
+func showMemberships(memberships Memberships) {
+	for i, membership := range memberships {
+		var role string
+		if len(membership.Roles) >= 1 {
+			role = membership.Roles[0].Name
+		}
+
+		fmt.Printf(`
+*************************** no.%d ***************************
+	#           : %d
+	Name        : %s
+	Role        : %s
+		    `,
+			i+1,
+			membership.ID,
+			membership.User.Name,
+			role)
+	}
 }
