@@ -39,6 +39,8 @@ func (c *Client) memberships(ctx context.Context, spath string, params map[strin
 
 	if resp.StatusCode == 404 {
 		return fmt.Errorf("Memberships Not Found")
+	} else if resp.StatusCode != 200 {
+		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
 	}
 
 	obj := &ResponseMembership{}

@@ -67,6 +67,10 @@ func (c *Client) Issues(ctx context.Context) error {
 		return err
 	}
 
+	if resp.StatusCode != 200 {
+		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
+	}
+
 	obj := &ResponseIssues{}
 	if err := decodeBody(resp, obj); err != nil {
 		return err
@@ -92,6 +96,8 @@ func (c *Client) Issue(ctx context.Context, id int) error {
 
 	if resp.StatusCode == 404 {
 		return fmt.Errorf("Issue Not Found")
+	} else if resp.StatusCode != 200 {
+		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
 	}
 
 	obj := &ResponseIssue{}

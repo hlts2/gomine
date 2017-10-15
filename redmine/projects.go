@@ -44,6 +44,8 @@ func (c *Client) Projects(ctx context.Context) error {
 
 	if resp.StatusCode == 404 {
 		return fmt.Errorf("Project Not Found")
+	} else if resp.StatusCode != 200 {
+		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
 	}
 
 	obj := &ReponseProjects{}
@@ -71,6 +73,8 @@ func (c *Client) Project(ctx context.Context, id int) error {
 
 	if resp.StatusCode == 404 {
 		return fmt.Errorf("Project Not Found")
+	} else if resp.StatusCode != 200 {
+		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
 	}
 
 	obj := &ResponseProject{}
