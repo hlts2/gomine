@@ -29,5 +29,19 @@ func init() {
 }
 
 func ls(cmd *cli.Command, args []string) error {
+	switch args[0] {
+
+	//Issues
+	case "i":
+
+		//Projects
+	case "p":
+
+	//Memberships
+	case "m":
+	default:
+		return fmt.Errorf("gomine ls: %v: It is a noexistent command option", args[0])
+	}
+
 	return nil
 }

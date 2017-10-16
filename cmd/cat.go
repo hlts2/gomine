@@ -34,6 +34,9 @@ func cat(cmd *cli.Command, args []string) error {
 
 	//Projects
 	case "p":
+
+	//Memberships
+	case "m":
 	default:
 		return fmt.Errorf("gomine cat: %v: It is a noexistent command option", args[0])
 	}
