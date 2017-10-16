@@ -1,7 +1,7 @@
 package config
 
 type Config struct {
-	Settings `yaml:settings`
+	Settings `yaml:"settings"`
 }
 
 type Settings struct {
@@ -9,4 +9,4 @@ type Settings struct {
 	APIKEY string `yaml:"apikey"`
 }
 
-const SettingsPath = "~/.config/godmine/config.yaml"
+const SettingsPath = "~/.config/gomine/config.yaml"
