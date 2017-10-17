@@ -5,5 +5,13 @@ import (
 )
 
 func TestGetConfig(t *testing.T) {
-	_ = GetConfig()
+	c := GetConfig()
+
+	if c.URL == "" {
+		t.Error("URL is empty")
+	}
+
+	if c.APIKEY == "" {
+		t.Error("APIKEY is empty")
+	}
 }

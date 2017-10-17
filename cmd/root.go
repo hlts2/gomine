@@ -5,7 +5,6 @@ import (
 	"os"
 
 	c "github.com/hlts2/gomine/config"
-
 	cli "github.com/spf13/cobra"
 )
 
