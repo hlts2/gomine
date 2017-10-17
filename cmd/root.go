@@ -19,6 +19,10 @@ var (
 
 func Execute() {
 	conf = c.GetConfig()
+	if conf.URL == "" || conf.APIKEY == "" {
+		fmt.Println("URL or APIKEY is not an exact value")
+		os.Exit(1)
+	}
 
 	if err := RootCmd.Execute(); err != nil {
 		fmt.Println(err)
