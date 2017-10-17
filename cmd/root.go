@@ -2,11 +2,9 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 
 	c "github.com/hlts2/gomine/config"
-	"gopkg.in/yaml.v2"
 
 	cli "github.com/spf13/cobra"
 )
@@ -21,17 +19,7 @@ var (
 )
 
 func Execute() {
-	buf, err := ioutil.ReadFile(c.SettingsPath)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-
-	err = yaml.Unmarshal(buf, conf)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	conf = c.GetConfig()
 
 	if err := RootCmd.Execute(); err != nil {
 		fmt.Println(err)
