@@ -19,8 +19,13 @@ var (
 
 func Execute() {
 	conf = c.GetConfig()
-	if conf.URL == "" || conf.APIKEY == "" {
-		fmt.Println("URL or APIKEY is not an exact value")
+	if conf.URL == "" {
+		fmt.Println("URL is empty value")
+		os.Exit(1)
+	}
+
+	if conf.APIKEY == "" {
+		fmt.Println("API_KEY is empty value")
 		os.Exit(1)
 	}
 
