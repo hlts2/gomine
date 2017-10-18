@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	c "github.com/hlts2/gomine/config"
+	c "github.com/hlts2/gomine/redmine"
 	cli "github.com/spf13/cobra"
 )
 
