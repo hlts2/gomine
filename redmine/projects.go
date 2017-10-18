@@ -53,9 +53,6 @@ func (c *Client) Projects(ctx context.Context) (*ReponseProjects, error) {
 		return nil, err
 	}
 
-	//TODO cmd側で書く
-	showProjects(obj.Projects)
-
 	return obj, nil
 }
 
