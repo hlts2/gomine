@@ -12,11 +12,13 @@ func TestMemberShipsByID(t *testing.T) {
 		return
 	}
 
-	err = c.MembershipsByID(context.Background(), 37)
+	obj, err := c.MembershipsByID(context.Background(), 37)
 	if err != nil {
 		t.Errorf("MembershipsByID error %v", err)
 		return
 	}
+
+	showMemberships(obj.Memberships)
 }
 
 func TestMemberShipsByName(t *testing.T) {
@@ -25,9 +27,11 @@ func TestMemberShipsByName(t *testing.T) {
 		t.Errorf("NewClient error %v", err)
 	}
 
-	err = c.MembershipsByName(context.Background(), "irai")
+	obj, err := c.MembershipsByName(context.Background(), "irai")
 	if err != nil {
 		t.Errorf("MembershipsByName error %v", err)
 		return
 	}
+
+	showMemberships(obj.Memberships)
 }

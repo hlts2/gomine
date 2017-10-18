@@ -31,30 +31,27 @@ type ResponseMembership struct {
 	Limit       int `json:"limit"`
 }
 
-func (c *Client) memberships(ctx context.Context, spath string, params map[string]string) error {
+func (c *Client) memberships(ctx context.Context, spath string, params map[string]string) (*ResponseMembership, error) {
 	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	if resp.StatusCode == 404 {
-		return fmt.Errorf("Memberships Not Found")
+		return nil, fmt.Errorf("Memberships Not Found")
 	} else if resp.StatusCode != 200 {
-		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
+		return nil, fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
 	}
 
 	obj := &ResponseMembership{}
 	if err := decodeBody(resp, obj); err != nil {
-		return err
+		return nil, err
 	}
 
-	//cmdパッケージ内で書く
-	showMemberships(obj.Memberships)
-
-	return nil
+	return obj, nil
 }
 
-func (c *Client) MembershipsByID(ctx context.Context, id int) error {
+func (c *Client) MembershipsByID(ctx context.Context, id int) (*ResponseMembership, error) {
 	spath := "/projects/" + strconv.Itoa(id) + "/memberships.json"
 
 	params := map[string]string{
@@ -64,7 +61,7 @@ func (c *Client) MembershipsByID(ctx context.Context, id int) error {
 	return c.memberships(ctx, spath, params)
 }
 
-func (c *Client) MembershipsByName(ctx context.Context, name string) error {
+func (c *Client) MembershipsByName(ctx context.Context, name string) (*ResponseMembership, error) {
 	spath := "/projects/" + name + "/memberships.json"
 
 	params := map[string]string{

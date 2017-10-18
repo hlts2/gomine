@@ -30,7 +30,7 @@ type ResponseProject struct {
 	Project `json:"project"`
 }
 
-func (c *Client) Projects(ctx context.Context) error {
+func (c *Client) Projects(ctx context.Context) (*ReponseProjects, error) {
 	spath := "/projects.json"
 
 	params := map[string]string{
@@ -39,27 +39,27 @@ func (c *Client) Projects(ctx context.Context) error {
 
 	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	if resp.StatusCode == 404 {
-		return fmt.Errorf("Project Not Found")
+		return nil, fmt.Errorf("Project Not Found")
 	} else if resp.StatusCode != 200 {
-		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
+		return nil, fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
 	}
 
 	obj := &ReponseProjects{}
 	if err := decodeBody(resp, obj); err != nil {
-		return nil
+		return nil, err
 	}
 
 	//TODO cmd側で書く
 	showProjects(obj.Projects)
 
-	return nil
+	return obj, nil
 }
 
-func (c *Client) Project(ctx context.Context, id int) error {
+func (c *Client) Project(ctx context.Context, id int) (*ResponseProject, error) {
 	spath := "/projects/" + strconv.Itoa(id) + ".json"
 
 	params := map[string]string{
@@ -68,22 +68,19 @@ func (c *Client) Project(ctx context.Context, id int) error {
 
 	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	if resp.StatusCode == 404 {
-		return fmt.Errorf("Project Not Found")
+		return nil, fmt.Errorf("Project Not Found")
 	} else if resp.StatusCode != 200 {
-		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
+		return nil, fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
 	}
 
 	obj := &ResponseProject{}
 	if err := decodeBody(resp, obj); err != nil {
-		return nil
+		return nil, err
 	}
 
-	//TODO cmd側で書く
-	showDetProject(obj.Project)
-
-	return nil
+	return obj, nil
 }

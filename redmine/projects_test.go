@@ -12,11 +12,13 @@ func TestProjects(t *testing.T) {
 		return
 	}
 
-	err = c.Projects(context.Background())
+	obj, err := c.Projects(context.Background())
 	if err != nil {
 		t.Errorf("Projects error %v", err)
 		return
 	}
+
+	showProjects(obj.Projects)
 }
 
 func TestProject(t *testing.T) {
@@ -26,9 +28,11 @@ func TestProject(t *testing.T) {
 		return
 	}
 
-	err = c.Project(context.Background(), 63)
+	obj, err := c.Project(context.Background(), 63)
 	if err != nil {
 		t.Errorf("Project error %v", err)
 		return
 	}
+
+	showDetProject(obj.Project)
 }
