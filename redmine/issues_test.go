@@ -12,11 +12,13 @@ func TestIssues(t *testing.T) {
 		return
 	}
 
-	err = c.Issues(context.Background())
+	obj, err := c.Issues(context.Background())
 	if err != nil {
 		t.Errorf("Issues error %v", err)
 		return
 	}
+
+	showIssues(obj.Issues)
 }
 
 func TestIssue(t *testing.T) {
@@ -26,9 +28,11 @@ func TestIssue(t *testing.T) {
 		return
 	}
 
-	err = c.Issue(context.Background(), 10078)
+	obj, err := c.Issue(context.Background(), 10078)
 	if err != nil {
 		t.Errorf("Issue error %v", err)
 		return
 	}
+
+	showDetIssue(obj.Issue)
 }

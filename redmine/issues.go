@@ -55,7 +55,7 @@ type ResponseIssues struct {
 	Limit      int `json:"limit"`
 }
 
-func (c *Client) Issues(ctx context.Context) error {
+func (c *Client) Issues(ctx context.Context) (*ResponseIssues, error) {
 	spath := "/issues.json"
 
 	params := map[string]string{
@@ -64,25 +64,22 @@ func (c *Client) Issues(ctx context.Context) error {
 
 	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	if resp.StatusCode != 200 {
-		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
+		return nil, fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
 	}
 
 	obj := &ResponseIssues{}
 	if err := decodeBody(resp, obj); err != nil {
-		return err
+		return nil, err
 	}
 
-	//cmdパッケーで書く
-	showIssues(obj.Issues)
-
-	return nil
+	return obj, nil
 }
 
-func (c *Client) Issue(ctx context.Context, id int) error {
+func (c *Client) Issue(ctx context.Context, id int) (*ResponseIssue, error) {
 	spath := "/issues/" + strconv.Itoa(id) + ".json"
 
 	params := map[string]string{
@@ -91,22 +88,19 @@ func (c *Client) Issue(ctx context.Context, id int) error {
 
 	resp, err := c.doGet(ctx, spath, params)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	if resp.StatusCode == 404 {
-		return fmt.Errorf("Issue Not Found")
+		return nil, fmt.Errorf("Issue Not Found")
 	} else if resp.StatusCode != 200 {
-		return fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
+		return nil, fmt.Errorf("Status Code Not Success: %d", resp.StatusCode)
 	}
 
 	obj := &ResponseIssue{}
 	if err := decodeBody(resp, obj); err != nil {
-		return nil
+		return nil, err
 	}
 
-	//cmdパッケーで書く
-	showDetIssue(obj.Issue)
-
-	return nil
+	return obj, nil
 }

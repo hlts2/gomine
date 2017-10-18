@@ -34,7 +34,7 @@ func ls(cmd *cli.Command, args []string) error {
 	//Issues
 	case "i":
 
-		//Projects
+	//Projects
 	case "p":
 
 	//Memberships
