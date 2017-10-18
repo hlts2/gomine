@@ -4,14 +4,16 @@ import (
 	"testing"
 )
 
-func TestGetConfig(t *testing.T) {
-	c := GetConfig()
+var conf Config
 
-	if c.URL == "" {
+func TestGetConfig(t *testing.T) {
+	conf = GetConfig()
+
+	if conf.URL == "" {
 		t.Error("URL is empty")
 	}
 
-	if c.APIKEY == "" {
+	if conf.APIKEY == "" {
 		t.Error("APIKEY is empty")
 	}
 }

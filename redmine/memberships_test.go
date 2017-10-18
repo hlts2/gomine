@@ -6,7 +6,7 @@ import (
 )
 
 func TestMemberShipsByID(t *testing.T) {
-	c, err := NewClient(URL, API_KEY)
+	c, err := NewClient(conf.URL, conf.APIKEY)
 	if err != nil {
 		t.Errorf("NewClient error %v", err)
 		return
@@ -20,7 +20,7 @@ func TestMemberShipsByID(t *testing.T) {
 }
 
 func TestMemberShipsByName(t *testing.T) {
-	c, err := NewClient(URL, API_KEY)
+	c, err := NewClient(conf.URL, conf.APIKEY)
 	if err != nil {
 		t.Errorf("NewClient error %v", err)
 	}

@@ -5,13 +5,8 @@ import (
 	"testing"
 )
 
-const (
-	URL     = ""
-	API_KEY = ""
-)
-
 func TestIssues(t *testing.T) {
-	c, err := NewClient(URL, API_KEY)
+	c, err := NewClient(conf.URL, conf.APIKEY)
 	if err != nil {
 		t.Errorf("NewClient error %v", err)
 		return
@@ -25,7 +20,7 @@ func TestIssues(t *testing.T) {
 }
 
 func TestIssue(t *testing.T) {
-	c, err := NewClient(URL, API_KEY)
+	c, err := NewClient(conf.URL, conf.APIKEY)
 	if err != nil {
 		t.Errorf("NewClient error %v", err)
 		return
