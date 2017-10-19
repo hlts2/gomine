@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	redmine "github.com/hlts2/gomine/redmine"
@@ -26,11 +27,16 @@ var (
 func init() {
 	RootCmd.AddCommand(lsCmd)
 
-	//lsCmd.Flags().StringVarP(&toWhom, "to", "t", "me", "get tickets to me")
-	//lsCmd.Flags().StringVarP(&filter, "filter", "f", "", "get filtered tickets")
+	lsCmd.PersistentFlags().StringVarP(&toWhom, "to", "t", "me", "get tickets to me")
+	lsCmd.PersistentFlags().StringVarP(&filter, "filter", "f", "", "get filtered tickets")
 }
 
 func ls(cmd *cli.Command, args []string) error {
+	if len(args) == 0 {
+		//TODO error
+		return errors.New("")
+	}
+
 	switch args[0] {
 
 	//Issues

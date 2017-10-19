@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	redmine "github.com/hlts2/gomine/redmine"
@@ -29,6 +30,11 @@ func init() {
 }
 
 func cat(cmd *cli.Command, args []string) error {
+	if len(args) == 0 {
+		//TODO error
+		return errors.New("")
+	}
+
 	switch args[0] {
 
 	//Issues
