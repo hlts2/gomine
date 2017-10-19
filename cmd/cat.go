@@ -74,7 +74,7 @@ func cat(cmd *cli.Command, args []string) error {
 		redmine.ShowMemberships(obj.Memberships)
 
 	default:
-		return fmt.Errorf("gomine %s cat: It is a noexistent command", args[0])
+		return fmt.Errorf("gomine cat %s: It is a noexistent command", args[0])
 	}
 
 	return nil
