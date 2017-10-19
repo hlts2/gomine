@@ -1,8 +1,10 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
+	redmine "github.com/hlts2/gomine/redmine"
 	cli "github.com/spf13/cobra"
 )
 
@@ -24,8 +26,8 @@ var (
 func init() {
 	RootCmd.AddCommand(lsCmd)
 
-	lsCmd.Flags().StringVarP(&toWhom, "to", "t", "me", "get tickets to me")
-	lsCmd.Flags().StringVarP(&filter, "filter", "f", "", "get filtered tickets")
+	//lsCmd.Flags().StringVarP(&toWhom, "to", "t", "me", "get tickets to me")
+	//lsCmd.Flags().StringVarP(&filter, "filter", "f", "", "get filtered tickets")
 }
 
 func ls(cmd *cli.Command, args []string) error {
@@ -33,14 +35,32 @@ func ls(cmd *cli.Command, args []string) error {
 
 	//Issues
 	case "i":
+		c, err := redmine.NewClient(conf.URL, conf.APIKEY)
+		if err != nil {
+			return err
+		}
 
+		obj, err := c.Issues(context.Background())
+		if err != nil {
+			return err
+		}
+
+		redmine.ShowIssues(obj.Issues)
 	//Projects
 	case "p":
+		c, err := redmine.NewClient(conf.URL, conf.APIKEY)
+		if err != nil {
+			return err
+		}
 
-	//Memberships
-	case "m":
+		obj, err := c.Projects(context.Background())
+		if err != nil {
+			return err
+		}
+
+		redmine.ShowProjects(obj.Projects)
 	default:
-		return fmt.Errorf("gomine ls: %v: It is a noexistent command option", args[0])
+		return fmt.Errorf("gomine ls %s : It is a noexistent command", args[0])
 	}
 
 	return nil
