@@ -18,7 +18,7 @@ func TestProjects(t *testing.T) {
 		return
 	}
 
-	showProjects(obj.Projects)
+	ShowProjects(obj.Projects)
 }
 
 func TestProject(t *testing.T) {
@@ -34,5 +34,5 @@ func TestProject(t *testing.T) {
 		return
 	}
 
-	showDetProject(obj.Project)
+	ShowDetProject(obj.Project)
 }

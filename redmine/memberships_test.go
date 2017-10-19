@@ -18,7 +18,7 @@ func TestMemberShipsByID(t *testing.T) {
 		return
 	}
 
-	showMemberships(obj.Memberships)
+	ShowMemberships(obj.Memberships)
 }
 
 func TestMemberShipsByName(t *testing.T) {
@@ -33,5 +33,5 @@ func TestMemberShipsByName(t *testing.T) {
 		return
 	}
 
-	showMemberships(obj.Memberships)
+	ShowMemberships(obj.Memberships)
 }

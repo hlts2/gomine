@@ -18,7 +18,7 @@ func TestIssues(t *testing.T) {
 		return
 	}
 
-	showIssues(obj.Issues)
+	ShowIssues(obj.Issues)
 }
 
 func TestIssue(t *testing.T) {
@@ -34,5 +34,5 @@ func TestIssue(t *testing.T) {
 		return
 	}
 
-	showDetIssue(obj.Issue)
+	ShowDetIssue(obj.Issue)
 }

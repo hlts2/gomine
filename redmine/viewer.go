@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func showIssues(issues Issues) {
+func ShowIssues(issues Issues) {
 	for i, v := range issues {
 		fmt.Printf(`
 *************************** no.%d ***************************
@@ -33,7 +33,7 @@ func showIssues(issues Issues) {
 	}
 }
 
-func showDetIssue(issue Issue) {
+func ShowDetIssue(issue Issue) {
 	fmt.Printf(`
 *************************** no.%d ***************************
 	#           : %d
@@ -64,7 +64,7 @@ func showDetIssue(issue Issue) {
 		issue.Description)
 }
 
-func showProjects(projects Projects) {
+func ShowProjects(projects Projects) {
 	fmt.Printf(`
 *************************** no.1 ***************************`)
 
@@ -80,7 +80,7 @@ func showProjects(projects Projects) {
 	}
 }
 
-func showDetProject(project Project) {
+func ShowDetProject(project Project) {
 	fmt.Printf(`
 *************************** no.%d ***************************
 	#           : %d
@@ -103,7 +103,7 @@ func showDetProject(project Project) {
 		project.Description)
 }
 
-func showMemberships(memberships Memberships) {
+func ShowMemberships(memberships Memberships) {
 	for i, membership := range memberships {
 		var role string
 		if len(membership.Roles) >= 1 {
