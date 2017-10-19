@@ -35,12 +35,12 @@ func cat(cmd *cli.Command, args []string) error {
 	case "i":
 		c, err := redmine.NewClient(conf.URL, conf.APIKEY)
 		if err != nil {
-			//TODO error
+			return err
 		}
 
 		obj, err := c.Issue(context.Background(), tcktNum)
 		if err != nil {
-			//TODO error
+			return err
 		}
 
 		redmine.ShowDetIssue(obj.Issue)
@@ -49,10 +49,12 @@ func cat(cmd *cli.Command, args []string) error {
 	case "p":
 		c, err := redmine.NewClient(conf.URL, conf.APIKEY)
 		if err != nil {
+			return err
 		}
 
 		obj, err := c.Project(context.Background(), tcktNum)
 		if err != nil {
+			return err
 		}
 
 		redmine.ShowDetProject(obj.Project)
@@ -61,10 +63,12 @@ func cat(cmd *cli.Command, args []string) error {
 	case "m":
 		c, err := redmine.NewClient(conf.URL, conf.APIKEY)
 		if err != nil {
+			return err
 		}
 
 		obj, err := c.MembershipsByID(context.Background(), tcktNum)
 		if err != nil {
+			return err
 		}
 
 		redmine.ShowMemberships(obj.Memberships)
