@@ -3,7 +3,6 @@ package redmine
 import (
 	"context"
 	"fmt"
-	"strconv"
 	"time"
 )
 
@@ -79,8 +78,8 @@ func (c *Client) Issues(ctx context.Context) (*ResponseIssues, error) {
 	return obj, nil
 }
 
-func (c *Client) Issue(ctx context.Context, id int) (*ResponseIssue, error) {
-	spath := "/issues/" + strconv.Itoa(id) + ".json"
+func (c *Client) Issue(ctx context.Context, id string) (*ResponseIssue, error) {
+	spath := "/issues/" + id + ".json"
 
 	params := map[string]string{
 		"key": c.APIKey,

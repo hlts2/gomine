@@ -28,7 +28,7 @@ func TestIssue(t *testing.T) {
 		return
 	}
 
-	obj, err := c.Issue(context.Background(), 10078)
+	obj, err := c.Issue(context.Background(), "10078")
 	if err != nil {
 		t.Errorf("Issue error %v", err)
 		return

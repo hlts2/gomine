@@ -3,7 +3,6 @@ package redmine
 import (
 	"context"
 	"fmt"
-	"strconv"
 )
 
 type Membership struct {
@@ -51,8 +50,8 @@ func (c *Client) memberships(ctx context.Context, spath string, params map[strin
 	return obj, nil
 }
 
-func (c *Client) MembershipsByID(ctx context.Context, id int) (*ResponseMembership, error) {
-	spath := "/projects/" + strconv.Itoa(id) + "/memberships.json"
+func (c *Client) MembershipsByID(ctx context.Context, id string) (*ResponseMembership, error) {
+	spath := "/projects/" + id + "/memberships.json"
 
 	params := map[string]string{
 		"key": c.APIKey,

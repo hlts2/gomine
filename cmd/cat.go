@@ -39,7 +39,7 @@ func cat(cmd *cli.Command, args []string) error {
 	case "m":
 
 	default:
-		return fmt.Errorf("gomine cat: %v: It is a noexistent command option", args[0])
+		return fmt.Errorf("gomine %s cat: It is a noexistent command option", args[0])
 	}
 
 	return nil

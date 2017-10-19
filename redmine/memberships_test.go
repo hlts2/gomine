@@ -12,7 +12,7 @@ func TestMemberShipsByID(t *testing.T) {
 		return
 	}
 
-	obj, err := c.MembershipsByID(context.Background(), 37)
+	obj, err := c.MembershipsByID(context.Background(), "37")
 	if err != nil {
 		t.Errorf("MembershipsByID error %v", err)
 		return

@@ -28,7 +28,7 @@ func TestProject(t *testing.T) {
 		return
 	}
 
-	obj, err := c.Project(context.Background(), 63)
+	obj, err := c.Project(context.Background(), "63")
 	if err != nil {
 		t.Errorf("Project error %v", err)
 		return
