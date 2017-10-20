@@ -3,6 +3,7 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"os"
 
 	redmine "github.com/hlts2/gomine/redmine"
 	cli "github.com/spf13/cobra"
@@ -14,6 +15,7 @@ var catCmd = &cli.Command{
 	Run: func(cmd *cli.Command, args []string) {
 		if err := cat(cmd, args); err != nil {
 			fmt.Println(err)
+			os.Exit(1)
 		}
 	},
 }
