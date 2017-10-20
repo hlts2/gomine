@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"context"
-	"errors"
 	"fmt"
 
 	redmine "github.com/hlts2/gomine/redmine"
@@ -33,8 +32,7 @@ func init() {
 
 func ls(cmd *cli.Command, args []string) error {
 	if len(args) == 0 {
-		//TODO error
-		return errors.New("")
+		return usage()
 	}
 
 	switch args[0] {
@@ -52,6 +50,7 @@ func ls(cmd *cli.Command, args []string) error {
 		}
 
 		redmine.ShowIssues(obj.Issues)
+
 	//Projects
 	case "p":
 		c, err := redmine.NewClient(conf.URL, conf.APIKEY)
@@ -66,7 +65,7 @@ func ls(cmd *cli.Command, args []string) error {
 
 		redmine.ShowProjects(obj.Projects)
 	default:
-		return fmt.Errorf("gomine ls %s : It is a noexistent command", args[0])
+		return usage()
 	}
 
 	return nil

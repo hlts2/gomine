@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"context"
-	"errors"
 	"fmt"
 
 	redmine "github.com/hlts2/gomine/redmine"
@@ -20,19 +19,18 @@ var catCmd = &cli.Command{
 }
 
 var (
-	tcktNum string
+	tID string
 )
 
 func init() {
 	RootCmd.AddCommand(catCmd)
 
-	catCmd.PersistentFlags().StringVarP(&tcktNum, "number", "n", "", "get ticket details of Redmine")
+	catCmd.PersistentFlags().StringVarP(&tID, "number", "n", "", "get ticket details of Redmine")
 }
 
 func cat(cmd *cli.Command, args []string) error {
 	if len(args) == 0 {
-		//TODO error
-		return errors.New("")
+		return usage()
 	}
 
 	switch args[0] {
@@ -44,7 +42,7 @@ func cat(cmd *cli.Command, args []string) error {
 			return err
 		}
 
-		obj, err := c.Issue(context.Background(), tcktNum)
+		obj, err := c.Issue(context.Background(), tID)
 		if err != nil {
 			return err
 		}
@@ -58,7 +56,7 @@ func cat(cmd *cli.Command, args []string) error {
 			return err
 		}
 
-		obj, err := c.Project(context.Background(), tcktNum)
+		obj, err := c.Project(context.Background(), tID)
 		if err != nil {
 			return err
 		}
@@ -72,7 +70,7 @@ func cat(cmd *cli.Command, args []string) error {
 			return err
 		}
 
-		obj, err := c.MembershipsByID(context.Background(), tcktNum)
+		obj, err := c.MembershipsByID(context.Background(), tID)
 		if err != nil {
 			return err
 		}
@@ -80,7 +78,7 @@ func cat(cmd *cli.Command, args []string) error {
 		redmine.ShowMemberships(obj.Memberships)
 
 	default:
-		return fmt.Errorf("gomine cat %s: It is a noexistent command", args[0])
+		return usage()
 	}
 
 	return nil
