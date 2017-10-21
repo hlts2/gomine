@@ -53,8 +53,6 @@ Memberships Command:
 
 ```
 $ gomine ls
-gomine cat <option> <arguments>
-
 gomine ls <option> <arguments>
 
 Issues Command:
