@@ -19,8 +19,9 @@ apikey: <please input your redmine apikey>
 
 ## CLI Usage
 
-$ gomine --help
+
 ```
+$ gomine --help
 Usage:
   gomine [command]
 
@@ -33,8 +34,8 @@ Flags:
   -h, --help   help for gomine
 ```
 
-$ gomine cat
 ```
+$ gomine cat
 gomine cat <option> <arguments>
 
 Issues Command:
@@ -50,8 +51,8 @@ Memberships Command:
         $ gomine cat -n 1 m
 ```
 
-$ gomine ls
 ```
+$ gomine ls
 gomine cat <option> <arguments>
 
 gomine ls <option> <arguments>
