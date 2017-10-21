@@ -13,8 +13,8 @@ go get github.com/hlts2/gomine
 Create a ` ~/.config/gomine/config.yaml`
 
 ```
-url: <please input your redmine url>
-apikey: <please input your redmine apikey>
+url: <please input your redmine URL>
+apikey: <please input your redmine APIKEY>
 ```
 
 ## CLI Usage
