@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	redmine "github.com/hlts2/gomine/redmine"
@@ -30,7 +31,7 @@ func init() {
 
 func cat(cmd *cli.Command, args []string) error {
 	if len(args) == 0 {
-		return usage()
+		return catUsage()
 	}
 
 	switch args[0] {
@@ -78,8 +79,25 @@ func cat(cmd *cli.Command, args []string) error {
 		redmine.ShowMemberships(obj.Memberships)
 
 	default:
-		return usage()
+		return catUsage()
 	}
 
 	return nil
+}
+
+func catUsage() error {
+	return errors.New(`gomine cat <option> <arguments>
+
+Issues Command:
+  cat   show given issue
+        $ gomine cat -n 10078 i
+
+Projects Command:
+  cat   show given project
+        $ gomine cat -n 1 p
+
+Memberships Command:
+  cat   show memberships of given project
+        $ gomine cat -n 1 m
+	`)
 }

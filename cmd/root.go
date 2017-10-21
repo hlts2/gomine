@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"errors"
 	"fmt"
 	"os"
 
@@ -34,27 +33,4 @@ func Execute() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-}
-
-func usage() error {
-	return errors.New(`gomine <command> <option> <arguments>
-
-Issues Command:
-  ls    listing projects
-        $ gomine ls i
-
-  cat   show given issue
-        $ gomine cat -n 10078 i
-
-Projects Command:
-  ls    listing projects
-        $ gomine ls p
-
-  cat   show given project
-        $ gomine cat -n 1 p
-
-Memberships Command:
-  cat   show memberships of given project
-        $ gomine cat -n 1 m
-	`)
 }
