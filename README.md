@@ -1,6 +1,6 @@
 # gomine
 
-gomine is command line tool for redmine viewer.
+gomine is command line tool for Redmine viewer.
 
 # Install
 
@@ -13,8 +13,8 @@ go get github.com/hlts2/gomine
 Create a ` ~/.config/gomine/config.yaml`
 
 ```
-url: <please input your redmine URL>
-apikey: <please input your redmine APIKEY>
+url: <Please input your Redmine URL>
+apikey: <Please input your Redmine APIKEY>
 ```
 
 ## CLI Usage
