@@ -1,6 +1,6 @@
 # gomine
 
-gomine is command line tool for viewing redmine tickets.
+gomine is command line tool for redmine viewer.
 
 # Install
 
