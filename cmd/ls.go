@@ -11,7 +11,7 @@ import (
 
 var lsCmd = &cli.Command{
 	Use:   "ls",
-	Short: "List the Redmine tickets",
+	Short: "List the \"issues\", \"projects\", \"memberships\" of Redmine",
 	Run: func(cmd *cli.Command, args []string) {
 		if err := ls(cmd, args); err != nil {
 			fmt.Println(err)

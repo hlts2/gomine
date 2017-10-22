@@ -11,7 +11,7 @@ import (
 
 var catCmd = &cli.Command{
 	Use:   "cat",
-	Short: "Show ticket details of Redmine",
+	Short: "Show \"issues\", \"projects\", \"memberships\" details of Redmine",
 	Run: func(cmd *cli.Command, args []string) {
 		if err := cat(cmd, args); err != nil {
 			fmt.Println(err)

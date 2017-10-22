@@ -26,9 +26,9 @@ Usage:
   gomine [command]
 
 Available Commands:
-  cat         Show ticket details of Redmine
+  cat         Show "issues", "projects", "memberships" details of Redmine
   help        Help about any command
-  ls          List the Redmine tickets
+  ls          List the "issues", "projects", "memberships" of Redmine
 
 Flags:
   -h, --help   help for gomine
