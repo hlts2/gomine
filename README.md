@@ -1,6 +1,6 @@
 # gomine
 
-gomine is command line tool for Redmine viewer.
+gomine is command line tool for viewing Redmine.
 
 # Install
 
