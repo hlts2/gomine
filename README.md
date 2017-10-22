@@ -28,7 +28,7 @@ Usage:
 Available Commands:
   cat         Show "issues", "projects", "memberships" details of Redmine
   help        Help about any command
-  ls          List the "issues", "projects", "memberships" of Redmine
+  ls          List "issues", "projects", "memberships" of Redmine
 
 Flags:
   -h, --help   help for gomine
