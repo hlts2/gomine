@@ -9,7 +9,10 @@ func FilterIssues(issues Issues, filters []string) Issues {
 	for _, issue := range issues {
 		isExist := true
 		for _, filter := range filters {
-			isExist = isExist && strings.Contains(filter, issue.Subject) || strings.Contains(filter, issue.Description)
+			flgSub := strings.Contains(issue.Subject, filter)
+			flgDesc := strings.Contains(issue.Description, filter)
+
+			isExist = isExist && (flgSub || flgDesc)
 		}
 
 		if isExist {
