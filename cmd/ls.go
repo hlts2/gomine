@@ -20,13 +20,13 @@ var lsCmd = &cli.Command{
 }
 
 var (
-	filter string
+	filters []string
 )
 
 func init() {
 	RootCmd.AddCommand(lsCmd)
 
-	lsCmd.PersistentFlags().StringVarP(&filter, "filter", "f", "", "get filtered tickets")
+	lsCmd.PersistentFlags().StringArrayVarP(&filters, "filter", "f", []string{}, "get")
 }
 
 func ls(cmd *cli.Command, args []string) error {
@@ -48,7 +48,12 @@ func ls(cmd *cli.Command, args []string) error {
 			return err
 		}
 
-		redmine.ShowIssues(obj.Issues)
+		if len(filters) == 0 {
+			redmine.ShowIssues(obj.Issues)
+		} else {
+			obj.Issues = redmine.FilterIssues(obj.Issues, filters)
+			redmine.ShowIssues(obj.Issues)
+		}
 
 	//Projects
 	case "p":

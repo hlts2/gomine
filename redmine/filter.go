@@ -4,7 +4,7 @@ import (
 	"strings"
 )
 
-func filterIssues(issues Issues, filters []string) Issues {
+func FilterIssues(issues Issues, filters []string) Issues {
 	var objs Issues
 	for _, issue := range issues {
 		isExist := true
