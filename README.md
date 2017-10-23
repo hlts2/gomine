@@ -22,9 +22,11 @@ C:\> type nul > C:\Users\<username>\AppData\.config\gomine\config.yaml
 $ touch ~/.config/gomine/config.yaml
 ```
 
+Input your Redmine info
+
 ```
-url: <Please input your Redmine URL>
-apikey: <Please input your Redmine APIKEY>
+url: <Redmine URL>
+apikey: <Redmine APIKEY>
 ```
 
 ## CLI Usage
