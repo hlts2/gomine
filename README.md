@@ -10,7 +10,17 @@ go get github.com/hlts2/gomine
 
 ## Example
 
-Create a ` ~/.config/gomine/config.yaml`
+Create a `config.yaml`
+
+#### Windows
+```
+C:\> type nul > C:\Users\<username>\AppData\.config\gomine\config.yaml
+```
+
+#### Unix
+```
+$ touch ~/.config/gomine/config.yaml
+```
 
 ```
 url: <Please input your Redmine URL>
