@@ -20,14 +20,12 @@ var lsCmd = &cli.Command{
 }
 
 var (
-	toWhom string
 	filter string
 )
 
 func init() {
 	RootCmd.AddCommand(lsCmd)
 
-	lsCmd.PersistentFlags().StringVarP(&toWhom, "to", "t", "me", "get tickets to me")
 	lsCmd.PersistentFlags().StringVarP(&filter, "filter", "f", "", "get filtered tickets")
 }
 
