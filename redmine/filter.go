@@ -22,3 +22,22 @@ func FilterIssues(issues Issues, filters []string) Issues {
 
 	return objs
 }
+
+func FilterProjects(projects Projects, filters []string) Projects {
+	var objs Projects
+	for _, project := range projects {
+		isExist := true
+		for _, filter := range filters {
+			flgName := strings.Contains(project.Name, filter)
+			flgIdent := strings.Contains(project.Identifier, filter)
+
+			isExist = isExist && (flgName || flgIdent)
+		}
+
+		if isExist {
+			objs = append(objs, project)
+		}
+	}
+
+	return objs
+}

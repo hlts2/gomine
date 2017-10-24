@@ -48,12 +48,11 @@ func ls(cmd *cli.Command, args []string) error {
 			return err
 		}
 
-		if len(filters) == 0 {
-			redmine.ShowIssues(obj.Issues)
-		} else {
+		if len(filters) != 0 {
 			obj.Issues = redmine.FilterIssues(obj.Issues, filters)
-			redmine.ShowIssues(obj.Issues)
 		}
+
+		redmine.ShowIssues(obj.Issues)
 
 	//Projects
 	case "p":
@@ -67,7 +66,12 @@ func ls(cmd *cli.Command, args []string) error {
 			return err
 		}
 
+		if len(filters) != 0 {
+			obj.Projects = redmine.FilterProjects(obj.Projects, filters)
+		}
+
 		redmine.ShowProjects(obj.Projects)
+
 	default:
 		return lsUsage()
 	}
