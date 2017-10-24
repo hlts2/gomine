@@ -82,11 +82,17 @@ Issues Command:
   ls    listing issues
         $ gomine ls i
 
-		filtered listings issues
-		$ gomine ls -f <filter word> i
+        filtered listings issues
+        $ gomine ls -f <filter word> i
 
 Projects Command:
   ls    listing projects
         $ gomine ls p
+
+        filtered listings projects
+        $ gomine ls -f <filter word> p
+
+Flags:
+  -f filter the list
 	`)
 }
