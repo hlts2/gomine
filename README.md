@@ -54,14 +54,14 @@ Issues Command:
   ls    listing issues
         $ gomine ls i
 
-        filtered listings issues
+        filtered listing issues
         $ gomine ls -f <filter word> i
 
 Projects Command:
   ls    listing projects
         $ gomine ls p
 
-        filtered listings projects
+        filtered listing projects
         $ gomine ls -f <filter word> p
 
 Flags:
