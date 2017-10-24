@@ -65,6 +65,10 @@ func ShowDetIssue(issue Issue) {
 }
 
 func ShowProjects(projects Projects) {
+	if len(projects) == 0 {
+		return
+	}
+
 	fmt.Printf(`
 *************************** no.1 ***************************`)
 
