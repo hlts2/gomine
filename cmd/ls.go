@@ -79,8 +79,11 @@ func lsUsage() error {
 	return errors.New(`gomine ls <option> <arguments>
 
 Issues Command:
-  ls    listing projects
+  ls    listing issues
         $ gomine ls i
+
+		filtered listings issues
+		$ gomine ls -f <filter word> i
 
 Projects Command:
   ls    listing projects
