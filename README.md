@@ -47,23 +47,6 @@ Flags:
 ```
 
 ```
-$ gomine cat
-gomine cat <option> <arguments>
-
-Issues Command:
-  cat   show given issue
-        $ gomine cat -n 10078 i
-
-Projects Command:
-  cat   show given project
-        $ gomine cat -n 1 p
-
-Memberships Command:
-  cat   show memberships of given project
-        $ gomine cat -n 1 m
-```
-
-```
 $ gomine ls
 gomine ls <option> <arguments>
 
@@ -83,4 +66,21 @@ Projects Command:
 
 Flags:
   -f filter the list
+```
+
+```
+$ gomine cat
+gomine cat <option> <arguments>
+
+Issues Command:
+  cat   show given issue
+        $ gomine cat -n 10078 i
+
+Projects Command:
+  cat   show given project
+        $ gomine cat -n 1 p
+
+Memberships Command:
+  cat   show memberships of given project
+        $ gomine cat -n 1 m
 ```
