@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
 
 	redmine "github.com/hlts2/gomine/redmine"
 	cli "github.com/spf13/cobra"
@@ -15,18 +16,19 @@ var catCmd = &cli.Command{
 	Run: func(cmd *cli.Command, args []string) {
 		if err := cat(cmd, args); err != nil {
 			fmt.Println(err)
+			os.Exit(1)
 		}
 	},
 }
 
 var (
-	tID string
+	id string
 )
 
 func init() {
-	RootCmd.AddCommand(catCmd)
+	rootCmd.AddCommand(catCmd)
 
-	catCmd.PersistentFlags().StringVarP(&tID, "number", "n", "", "get ticket details of Redmine")
+	catCmd.PersistentFlags().StringVarP(&id, "number", "n", "", "get ticket details of Redmine")
 }
 
 func cat(cmd *cli.Command, args []string) error {
@@ -43,7 +45,7 @@ func cat(cmd *cli.Command, args []string) error {
 			return err
 		}
 
-		obj, err := c.Issue(context.Background(), tID)
+		obj, err := c.Issue(context.Background(), id)
 		if err != nil {
 			return err
 		}
@@ -57,7 +59,7 @@ func cat(cmd *cli.Command, args []string) error {
 			return err
 		}
 
-		obj, err := c.Project(context.Background(), tID)
+		obj, err := c.Project(context.Background(), id)
 		if err != nil {
 			return err
 		}
@@ -71,7 +73,7 @@ func cat(cmd *cli.Command, args []string) error {
 			return err
 		}
 
-		obj, err := c.MembershipsByID(context.Background(), tID)
+		obj, err := c.MembershipsByID(context.Background(), id)
 		if err != nil {
 			return err
 		}

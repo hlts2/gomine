@@ -11,7 +11,7 @@ import (
 var (
 	conf c.Config
 
-	RootCmd = &cli.Command{
+	rootCmd = &cli.Command{
 		Use:   "gomine",
 		Short: "A CLI tool for Redmine tickets viewer",
 	}
@@ -29,7 +29,7 @@ func Execute() {
 		os.Exit(1)
 	}
 
-	if err := RootCmd.Execute(); err != nil {
+	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}

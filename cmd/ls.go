@@ -4,8 +4,9 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
 
-	redmine "github.com/hlts2/gomine/redmine"
+	"github.com/hlts2/gomine/redmine"
 	cli "github.com/spf13/cobra"
 )
 
@@ -15,6 +16,7 @@ var lsCmd = &cli.Command{
 	Run: func(cmd *cli.Command, args []string) {
 		if err := ls(cmd, args); err != nil {
 			fmt.Println(err)
+			os.Exit(1)
 		}
 	},
 }
@@ -24,7 +26,7 @@ var (
 )
 
 func init() {
-	RootCmd.AddCommand(lsCmd)
+	rootCmd.AddCommand(lsCmd)
 
 	lsCmd.PersistentFlags().StringArrayVarP(&filters, "filter", "f", []string{}, "get")
 }
