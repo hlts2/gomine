@@ -10,16 +10,16 @@ gomine is command line tool for Redmine ticket viewer.
 go get github.com/hlts2/gomine
 ```
 
-## Example
+## Settings
 
 Create a `config.yaml`
 
-#### Windows
+### Windows
 ```
 C:\> type nul > C:\Users\<username>\AppData\.config\gomine\config.yaml
 ```
 
-#### Unix
+### Unix
 ```
 $ touch ~/.config/gomine/config.yaml
 ```
@@ -32,7 +32,6 @@ apikey: <Redmine APIKEY>
 ```
 
 ## CLI Usage
-
 
 ```
 $ gomine --help
