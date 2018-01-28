@@ -15,16 +15,14 @@ type Client struct {
 	HTTPClient *http.Client
 }
 
-func NewClient(urlStr, apiKey string) (*Client, error) {
+func NewClient(urlStr, APIKey string) (*Client, error) {
 	url, err := url.ParseRequestURI(urlStr)
 	if err != nil {
 		return nil, err
 	}
 
-	c := &Client{}
-	c.URL = url
-	c.APIKey = apiKey
-	c.HTTPClient = &http.Client{}
+	c := &Client{url, APIKey, &http.Client{}}
+
 	return c, nil
 }
 
