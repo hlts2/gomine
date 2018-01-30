@@ -24,7 +24,7 @@ C:\> type nul > C:\Users\<username>\AppData\.config\gomine\config.yaml
 $ touch ~/.config/gomine/config.yaml
 ```
 
-Input your Redmine info
+Enter your Redmine config
 
 ```
 url: <Redmine URL>
