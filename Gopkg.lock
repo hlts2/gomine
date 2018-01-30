@@ -2,10 +2,34 @@
 
 
 [[projects]]
+  name = "github.com/briandowns/spinner"
+  packages = ["."]
+  revision = "48dbb65d7bd5c74ab50d53d04c949f20e3d14944"
+  version = "1.0"
+
+[[projects]]
+  name = "github.com/fatih/color"
+  packages = ["."]
+  revision = "570b54cabe6b8eb0bc2dfce68d964677d63b5260"
+  version = "v1.5.0"
+
+[[projects]]
   name = "github.com/inconshreveable/mousetrap"
   packages = ["."]
   revision = "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
   version = "v1.0"
+
+[[projects]]
+  name = "github.com/mattn/go-colorable"
+  packages = ["."]
+  revision = "167de6bfdfba052fa6b2d3664c8f5272e23c9072"
+  version = "v0.0.9"
+
+[[projects]]
+  name = "github.com/mattn/go-isatty"
+  packages = ["."]
+  revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
+  version = "v0.0.3"
 
 [[projects]]
   branch = "master"
@@ -19,9 +43,21 @@
   revision = "e57e3eeb33f795204c1ca35f56c44f83227c6e66"
   version = "v1.0.0"
 
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/sys"
+  packages = ["unix"]
+  revision = "ff2a66f350cefa5c93a634eadb5d25bb60c85a9c"
+
+[[projects]]
+  branch = "v2"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  revision = "d670f9405373e636a5a2765eea47fac0c9bc91a4"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "fd56cc1810ff527dc29fa5ac153938af6d8df6a405c953638f1275f24d6073d9"
+  inputs-digest = "b3aa50d1d12ca37ba2ad766eb57a4417d8132310f5d82f799aa3658f7a35ae38"
   solver-name = "gps-cdcl"
   solver-version = 1

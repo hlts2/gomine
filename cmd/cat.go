@@ -5,6 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"time"
+
+	"github.com/briandowns/spinner"
 
 	redmine "github.com/hlts2/gomine/redmine"
 	cli "github.com/spf13/cobra"
@@ -35,6 +38,10 @@ func cat(cmd *cli.Command, args []string) error {
 	if len(args) == 0 {
 		return catUsage()
 	}
+
+	progress := spinner.New(spinner.CharSets[9], 100*time.Millisecond)
+	progress.Start()
+	defer progress.Stop()
 
 	switch args[0] {
 
